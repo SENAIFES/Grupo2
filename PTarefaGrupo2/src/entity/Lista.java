@@ -5,30 +5,59 @@
  */
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
- * @author rafael_lima3
+ * @author renann_schutz
  */
 public class Lista {
+    
+    private int id;
     private String nome;
+    private List<Tarefa> listatarefa;
+    
+    public Lista(){
+        listatarefa = new ArrayList();
+    }
 
     
-    
-    
-    
-    
-    @Override
-    public String toString() {
-        return nome;
+    public Lista(int id){
+        this.id = id;
+            }
+    public Lista (String nome){
+        this.nome = nome;
     }
     
-//  getters and setters
+    
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Tarefa> getListatarefa() {
+        return listatarefa;
+    }
+
+    public void setListatarefa(List<Tarefa> listatarefa) {
+        this.listatarefa = listatarefa;
+    }
+
+    public void add(List<Lista> lista) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
