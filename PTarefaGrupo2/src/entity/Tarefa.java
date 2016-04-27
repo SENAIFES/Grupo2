@@ -5,15 +5,13 @@ import java.util.Date;
 
 public class Tarefa {
 
-    public Tarefa(String descricao, Date prazo, Boolean feito) {
-        this.descricao = descricao;
-        this.prazo = prazo;
-        this.feito = feito;
-    }
+   
     
     private String descricao;
     private Date prazo;
     private Boolean feito;
+    
+    //  getters and setters
 
     public String getDescricao() {
         return descricao;

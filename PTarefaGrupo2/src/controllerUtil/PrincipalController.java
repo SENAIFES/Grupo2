@@ -34,12 +34,8 @@ public class PrincipalController {
 
     private void atualizarTabela() {
         List <Tarefa> lista = new ArrayList();
-        Tarefa t1 = new Tarefa("Blábum",new Date(),true);
-        Tarefa t2 = new Tarefa("Blábim",new Date(),true);
-        Tarefa t3 = new Tarefa("Blábom",new Date(),true);
-        lista.add(t1);
-        lista.add(t2);
-        lista.add(t3);
+       
+        
         TarefaTableModel ttm = new TarefaTableModel();
         ttm.setLista(lista);
         

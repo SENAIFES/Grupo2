@@ -42,18 +42,18 @@ public class Principal extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jPanel1 = new javax.swing.JPanel();
         btnNovaTarefa = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbtConcluidos = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTarefa = new javax.swing.JTable();
-        btnTerminado = new javax.swing.JButton();
+        btnFeito = new javax.swing.JButton();
         btnExcluirTarefa = new javax.swing.JButton();
         btnAlterarTarefa = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        rbtTodos = new javax.swing.JRadioButton();
+        rbtHoje = new javax.swing.JRadioButton();
+        rbtSemana = new javax.swing.JRadioButton();
+        rbtMes = new javax.swing.JRadioButton();
         jMenuBar2 = new javax.swing.JMenuBar();
         MenuListas = new javax.swing.JMenu();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
@@ -85,7 +85,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Mostrar concluidas");
+        rbtConcluidos.setText("Mostrar concluidas");
 
         tblTarefa.setAutoCreateRowSorter(true);
         tblTarefa.setModel(new javax.swing.table.DefaultTableModel(
@@ -125,10 +125,10 @@ public class Principal extends javax.swing.JFrame {
         tblTarefa.setEnabled(false);
         jScrollPane1.setViewportView(tblTarefa);
 
-        btnTerminado.setText("Feito");
-        btnTerminado.addActionListener(new java.awt.event.ActionListener() {
+        btnFeito.setText("Feito");
+        btnFeito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerminadoActionPerformed(evt);
+                btnFeitoActionPerformed(evt);
             }
         });
 
@@ -152,11 +152,11 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(btnNovaTarefa)
                         .addGap(27, 27, 27)
                         .addComponent(btnAlterarTarefa))
-                    .addComponent(jRadioButton1))
+                    .addComponent(rbtConcluidos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(btnExcluirTarefa)
                 .addGap(99, 99, 99)
-                .addComponent(btnTerminado)
+                .addComponent(btnFeito)
                 .addGap(38, 38, 38))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,16 +167,16 @@ public class Principal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(rbtConcluidos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNovaTarefa)
                             .addComponent(btnExcluirTarefa)
                             .addComponent(btnAlterarTarefa)))
-                    .addComponent(btnTerminado, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnFeito, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -185,14 +185,14 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtros", 0, 0, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("Todos");
+        rbtTodos.setSelected(true);
+        rbtTodos.setText("Todos");
 
-        jRadioButton3.setText("Hoje");
+        rbtHoje.setText("Hoje");
 
-        jRadioButton4.setText("Semana");
+        rbtSemana.setText("Semana");
 
-        jRadioButton5.setText("Mês");
+        rbtMes.setText("Mês");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -200,23 +200,23 @@ public class Principal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton2)
+                .addComponent(rbtTodos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rbtHoje)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton4)
+                .addComponent(rbtSemana)
                 .addGap(22, 22, 22)
-                .addComponent(jRadioButton5)
+                .addComponent(rbtMes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
+                    .addComponent(rbtTodos)
+                    .addComponent(rbtMes)
+                    .addComponent(rbtHoje)
+                    .addComponent(rbtSemana))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -267,16 +267,18 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(142, 142, 142)
+                                .addComponent(jLabel1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,7 +287,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(7, 7, 7)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -309,9 +311,9 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.showInputDialog("Lista: ");
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void btnTerminadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminadoActionPerformed
+    private void btnFeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeitoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTerminadoActionPerformed
+    }//GEN-LAST:event_btnFeitoActionPerformed
 
     private void btnAlterarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarTarefaActionPerformed
         CadastrarTarefa tela = new CadastrarTarefa(this, true);
@@ -374,8 +376,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuListas;
     private javax.swing.JButton btnAlterarTarefa;
     private javax.swing.JButton btnExcluirTarefa;
+    private javax.swing.JButton btnFeito;
     private javax.swing.JButton btnNovaTarefa;
-    private javax.swing.JButton btnTerminado;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
@@ -388,14 +390,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JRadioButton rbtConcluidos;
+    private javax.swing.JRadioButton rbtHoje;
+    private javax.swing.JRadioButton rbtMes;
+    private javax.swing.JRadioButton rbtSemana;
+    private javax.swing.JRadioButton rbtTodos;
     private javax.swing.JTable tblTarefa;
     // End of variables declaration//GEN-END:variables
 }
