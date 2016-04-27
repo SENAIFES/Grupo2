@@ -17,6 +17,23 @@ public class TarefaTableModel extends AbstractTableModel {
         this.lista = lista;
     }
 
+    
+    @Override
+
+    public String getColumnName(int columnIndex) {
+
+        if (columnIndex == 0) {
+
+            return "Descrição";
+        } else if (columnIndex == 1) {
+            return "Prazo";
+        } else if (columnIndex == 2) {
+            return "Feito";
+        } else {
+            return "";
+        }
+    }
+
     @Override
     public int getRowCount() {
         return lista.size();
@@ -40,7 +57,7 @@ public class TarefaTableModel extends AbstractTableModel {
         } else {
             return "";
 
+        }
     }
-}
 
 }
