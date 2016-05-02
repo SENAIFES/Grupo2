@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `dbtodolist`.`tarefa` (
   `idtarefa` INT(11) NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NOT NULL,
   `dtexecucao` DATE NULL DEFAULT NULL,
-  `dtexecutada` DATE NULL DEFAULT NULL,
+  `dtexecutada` TINYINT(1) NULL DEFAULT NULL,
   `fk_idlista` INT(11) NOT NULL,
   PRIMARY KEY (`idtarefa`),
   UNIQUE INDEX `idtarefa_UNIQUE` (`idtarefa` ASC),

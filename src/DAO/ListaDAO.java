@@ -93,7 +93,7 @@ public class ListaDAO {
     }
 
     public List<Lista> listarTodos() {
-        List<Lista> lista = new ArrayList<Lista>();
+        List<Lista> listaDeListas = new ArrayList<Lista>();
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
@@ -102,12 +102,12 @@ public class ListaDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                Lista listaDeListas = new Lista();
-                listaDeListas.setId(rs.getInt("idLista"));
-                listaDeListas.setNome(rs.getString("nome"));
+                Lista lista = new Lista();
+                lista.setId(rs.getInt("idLista"));
+                lista.setNome(rs.getString("nome"));
                 
 
-                TarefaDAO tarefaDAO = new TarefaDAO();
+                
                
 
                 listaDeListas.add(lista);
@@ -118,9 +118,46 @@ public class ListaDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return lista;
+        return listaDeListas;
     }
+    
+    public List<Tarefa> listaTarefas(Lista lista) {
+        List<Tarefa> listaTarefas = new ArrayList<>();
+        Connection conn = ConnectionManager.getConnection();
+        try {
+            PreparedStatement ps
+                    = conn.prepareStatement("SELECT idTarefa, descricao, dtexecucao, dtexecutada, "
+                            + " FROM Tarefa WHERE fk_idlista = ?");
+            ps.setInt(0, lista.getId());
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                Tarefa tarefa = new Tarefa();
+                tarefa.setId(rs.getInt("idTarefa"));
+                tarefa.setDescricao(rs.getString("descricao"));
+                tarefa.setPrazo(rs.getDate("dtexecucao"));
+                tarefa.setFeito(rs.getBoolean("dtexecutada"));
+                tarefa.setIdLista(rs.getInt("fk_idlista"));
+                
 
+                
+               
+
+                listaTarefas.add(tarefa);
+            }
+            
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return listaTarefas;
+        
+        
+        
+    }
+    
     
 
     

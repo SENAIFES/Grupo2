@@ -56,9 +56,7 @@ public class Lista {
         this.listatarefa = listatarefa;
     }
 
-    public void add(List<Lista> lista) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
     
 }

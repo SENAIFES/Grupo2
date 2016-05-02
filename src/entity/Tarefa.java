@@ -18,6 +18,15 @@ public class Tarefa {
     private String descricao;
     private Date prazo;
     private Boolean feito;
+    private int idLista;
+
+    public int getIdLista() {
+        return idLista;
+    }
+
+    public void setIdLista(int idLista) {
+        this.idLista = idLista;
+    }
 
     public Tarefa() {
             }
