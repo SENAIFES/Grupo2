@@ -59,24 +59,24 @@ public class ListaDAO {
         return false;
     }
 
-    public int delete(Lista lista) {
+    public boolean delete(int id) {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
                     = conn.prepareStatement("DELETE FROM Lista "
                             + "WHERE idLista = ?");
-            ps.setInt(1, lista.getId());
+            ps.setInt(1, id);
 
             ps.execute();
 
             ps.close();
             conn.close();
-            return lista.getId();
+            return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return -1;
+        return false;
     }
 
     public List<Lista> listarTodos() {
@@ -120,7 +120,7 @@ public class ListaDAO {
                 tarefa.setDescricao(rs.getString("Descricao"));
                 tarefa.setPrazo(rs.getDate("Prazo"));
                 tarefa.setFeito(rs.getBoolean("Feito"));
-                tarefa.setIdLista(rs.getInt("idlista"));
+                
 
                 listaTarefas.add(tarefa);
             }

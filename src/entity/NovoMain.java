@@ -31,13 +31,13 @@ public class NovoMain {
         calendar.set(2016, 1, 1);
         tarefa.setPrazo(umaData);
         tarefa.setFeito(false);
-        tarefa.setIdLista(5);
+       
          
-        tarefaDAO.salvar(tarefa,1);
+        tarefaDAO.salvar(tarefa,2);
         
         
         System.out.println(listaDAO.listarTodos());
-        System.out.println(listaDAO.listaTarefas(5));
+        System.out.println(listaDAO.listaTarefas(2));
     }
     
 }
