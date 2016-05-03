@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.text.SimpleDateFormat;
@@ -6,9 +5,15 @@ import java.util.Date;
 
 public class Tarefa {
 
-    public Tarefa(int id){
+    public Tarefa(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return descricao;
+    }
+
     public Tarefa(String descricao, Date prazo, Boolean feito) {
         this.descricao = descricao;
         this.prazo = prazo;
@@ -29,7 +34,7 @@ public class Tarefa {
     }
 
     public Tarefa() {
-            }
+    }
 
     public int getId() {
         return id;
@@ -39,7 +44,6 @@ public class Tarefa {
         this.id = id;
     }
 
-        
     public String getDescricao() {
         return descricao;
     }
@@ -63,11 +67,5 @@ public class Tarefa {
     public void setFeito(Boolean feito) {
         this.feito = feito;
     }
-    
-   
-
-
-
-
 
 }

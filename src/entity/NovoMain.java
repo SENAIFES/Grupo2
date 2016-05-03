@@ -13,27 +13,31 @@ public class NovoMain {
 
     
     public static void main(String[] args) {
-        ListaDAO l = new ListaDAO();
-        Lista ll= new Lista();
+        ListaDAO listaDAO = new ListaDAO();
+        Lista lista= new Lista();
         
-        TarefaDAO t =new TarefaDAO();
-        Tarefa tt = new Tarefa();
-        
-        
-        ll.setNome("Venda");
-        l.salvar(ll);
+        TarefaDAO tarefaDAO =new TarefaDAO();
+        Tarefa tarefa = new Tarefa();
         
         
+        lista.setNome("Jaime vai");
+        listaDAO.salvar(lista);
         
-        tt.setDescricao("Comprar ovo");
+        
+        listaDAO.listarTodos();
+        tarefa.setDescricao("Comprar ovo");
         Date umaData = new Date();
         Calendar calendar = new GregorianCalendar();
         calendar.set(2016, 1, 1);
-        tt.setPrazo(new Date());
-         tt.setFeito(Boolean.FALSE);
+        tarefa.setPrazo(umaData);
+        tarefa.setFeito(false);
+        tarefa.setIdLista(5);
          
-         t.salvar(tt,1);
+        tarefaDAO.salvar(tarefa,1);
         
+        
+        System.out.println(listaDAO.listarTodos());
+        System.out.println(listaDAO.listaTarefas(5));
     }
     
 }

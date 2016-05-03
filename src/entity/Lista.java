@@ -13,25 +13,28 @@ import java.util.List;
  * @author renann_schutz
  */
 public class Lista {
-    
+
     private int id;
     private String nome;
-    private List<Tarefa> listatarefa;
     
-    public Lista(){
-        listatarefa = new ArrayList();
+
+    @Override
+    public String toString() {
+        return nome;
     }
 
-    
-    public Lista(int id){
+    public Lista() {
+        
+    }
+
+    public Lista(int id) {
         this.id = id;
-            }
-    public Lista (String nome){
+    }
+
+    public Lista(String nome) {
         this.nome = nome;
     }
-    
-    
-    
+
     public int getId() {
         return id;
     }
@@ -48,15 +51,5 @@ public class Lista {
         this.nome = nome;
     }
 
-    public List<Tarefa> getListatarefa() {
-        return listatarefa;
-    }
-
-    public void setListatarefa(List<Tarefa> listatarefa) {
-        this.listatarefa = listatarefa;
-    }
-
-    
-    
     
 }

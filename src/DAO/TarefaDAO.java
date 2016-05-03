@@ -30,7 +30,7 @@ public class TarefaDAO {
             ps.setString(1, tarefa.getDescricao());
             ps.setDate(2, new java.sql.Date(tarefa.getPrazo().getTime()));
             ps.setBoolean(3, tarefa.getFeito());
-            ps.setInt(4, idLista);
+            ps.setInt(4, tarefa.getIdLista());
 
             ps.execute();
             ps.close();
@@ -52,7 +52,8 @@ public class TarefaDAO {
             ps.setString(1, tarefa.getDescricao());
             ps.setBoolean(2, tarefa.getFeito());
             ps.setDate(3, new java.sql.Date(tarefa.getPrazo().getTime()));
-            ps.setInt(4, tarefa.getId());
+            ps.setInt(4, tarefa.getIdLista());
+            
 
             ps.execute();
 
@@ -111,7 +112,7 @@ public class TarefaDAO {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
-                    = conn.prepareStatement("SELECT descricao, prazo, feito, idTarefa "
+                    = conn.prepareStatement("SELECT descricao, prazo, feito, idTarefa, idLista "
                             + " FROM Tarefa");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -121,6 +122,7 @@ public class TarefaDAO {
                 tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setPrazo(rs.getDate("prazo"));
                 tarefa.setFeito(rs.getBoolean("feito"));
+                tarefa.setIdLista(rs.getInt("idLista"));
 
                 listaTarefa.add(tarefa);
             }
