@@ -25,7 +25,7 @@ public class TarefaDAO {
         try {
             PreparedStatement ps
                     = conn.prepareStatement("INSERT INTO Tarefa "
-                            + "(descricao, prazo, feito, idLista)  "
+                            + "(descricao, prazo, feito, idlista)  "
                             + "VALUES ( ?, ?, ?, ?)");
             ps.setString(1, tarefa.getDescricao());
             ps.setDate(2, new java.sql.Date(tarefa.getPrazo().getTime()));
@@ -47,11 +47,12 @@ public class TarefaDAO {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement("UPDATE Tarefa "
-                    + "SET nome = ?, prazo = ?, feito = ?"
-                    + " WHERE idLista = ?");
+                    + "SET Descricao = ?, Prazo = ?, Feito = ?"
+                    + " WHERE idlista = ? ");
             ps.setString(1, tarefa.getDescricao());
             ps.setDate(2, new java.sql.Date(tarefa.getPrazo().getTime()));
             ps.setBoolean(3, tarefa.getFeito());
+            ps.setInt(4, idLista);
            
             
 
