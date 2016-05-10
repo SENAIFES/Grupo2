@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ListaDAO {
 
-    public int salvar(Lista lista) {
+    public boolean salvar(Lista lista) {
         if (lista.getId() == 0) {
             return inserir(lista);
         } else {
@@ -20,7 +20,7 @@ public class ListaDAO {
         }
     }
 
-    private int inserir(Lista lista) {
+    private boolean inserir(Lista lista) {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
@@ -30,28 +30,15 @@ public class ListaDAO {
             ps.setString(1, lista.getNome());
 
             ps.execute();
-
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                lista.setId(rs.getInt(1));
-            }
-
-            TarefaDAO tarefaDAO = new TarefaDAO();
-            for (Tarefa tarefa : lista.getListatarefa()) {
-                tarefaDAO.salvar(tarefa, lista.getId());
-            }
-
-            ps.close();
-            conn.close();
-            return lista.getId();
+            return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return -1;
+        return false;
     }
 
-    private int update(Lista lista) {
+    private boolean update(Lista lista) {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement("UPDATE Lista "
@@ -64,51 +51,47 @@ public class ListaDAO {
 
             ps.close();
             conn.close();
-            return lista.getId();
+            return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return -1;
+        return false;
     }
 
-    public int delete(Lista lista) {
+    public boolean delete(int id) {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
                     = conn.prepareStatement("DELETE FROM Lista "
                             + "WHERE idLista = ?");
-            ps.setInt(1, lista.getId());
+            ps.setInt(1, id);
 
             ps.execute();
 
             ps.close();
             conn.close();
-            return lista.getId();
+            return true;
 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return -1;
+        return false;
     }
 
     public List<Lista> listarTodos() {
-        List<Lista> lista = new ArrayList<Lista>();
+        List<Lista> listaDeListas = new ArrayList<Lista>();
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
-                    = conn.prepareStatement("SELECT idLista, nome"
+                    = conn.prepareStatement("SELECT *"
                             + " FROM Lista");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                Lista listaDeListas = new Lista();
-                listaDeListas.setId(rs.getInt("idLista"));
-                listaDeListas.setNome(rs.getString("nome"));
-                
-
-                TarefaDAO tarefaDAO = new TarefaDAO();
-               
+                Lista lista = new Lista();
+                lista.setId(rs.getInt("idLista"));
+                lista.setNome(rs.getString("Nome"));
 
                 listaDeListas.add(lista);
             }
@@ -118,10 +101,38 @@ public class ListaDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return lista;
+        return listaDeListas;
     }
 
-    
+    public List<Tarefa> listaTarefas(int id) {
+        List<Tarefa> listaTarefas = new ArrayList<>();
+        Connection conn = ConnectionManager.getConnection();
+        try {
+            PreparedStatement ps
+                    = conn.prepareStatement("SELECT *"
+                            + "FROM Tarefa WHERE idlista = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
 
-    
+            while (rs.next()) {
+                Tarefa tarefa = new Tarefa();
+                tarefa.setId(rs.getInt("idTarefa"));
+                tarefa.setDescricao(rs.getString("Descricao"));
+                tarefa.setPrazo(rs.getDate("Prazo"));
+                tarefa.setFeito(rs.getBoolean("Feito"));
+                
+
+                listaTarefas.add(tarefa);
+            }
+
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return listaTarefas;
+
+    }
+
 }

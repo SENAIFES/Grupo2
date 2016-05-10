@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controllerUtil;
 
 import entity.Tarefa;
@@ -12,12 +8,7 @@ import java.util.List;
 import view.Principal;
 import view.TarefaTableModel;
 
-/**
- *
- * @author renann_schutz
- */
 public class PrincipalController {
-    
     
     private Principal view;
 
@@ -28,8 +19,7 @@ public class PrincipalController {
         atualizarTabela();
         
         view.setVisible(true);
-        
-        
+       
     }
 
     private void atualizarTabela() {

@@ -17,7 +17,6 @@ public class TarefaTableModel extends AbstractTableModel {
         this.lista = lista;
     }
 
-    
     @Override
 
     public String getColumnName(int columnIndex) {

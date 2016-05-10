@@ -16,7 +16,7 @@ public class TarefaDAO {
         if (tarefa.getId() == 0) {
             return insert(tarefa, idLista);
         } else {
-            return update(tarefa);
+            return update(tarefa, idLista);
         }
     }
 
@@ -25,7 +25,7 @@ public class TarefaDAO {
         try {
             PreparedStatement ps
                     = conn.prepareStatement("INSERT INTO Tarefa "
-                            + "(descricao, prazo, feito, idLista)  "
+                            + "(descricao, prazo, feito, idlista)  "
                             + "VALUES ( ?, ?, ?, ?)");
             ps.setString(1, tarefa.getDescricao());
             ps.setDate(2, new java.sql.Date(tarefa.getPrazo().getTime()));
@@ -43,16 +43,18 @@ public class TarefaDAO {
         return false;
     }
 
-    private boolean update(Tarefa tarefa) {
+    private boolean update(Tarefa tarefa, int idLista) {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement("UPDATE Tarefa "
-                    + "SET nome = ?, feito = ?, prazo = ?"
-                    + " WHERE idLista = ?");
+                    + "SET Descricao = ?, Prazo = ?, Feito = ?"
+                    + " WHERE idlista = ? ");
             ps.setString(1, tarefa.getDescricao());
-            ps.setBoolean(2, tarefa.getFeito());
-            ps.setDate(3, new java.sql.Date(tarefa.getPrazo().getTime()));
-            ps.setInt(4, tarefa.getId());
+            ps.setDate(2, new java.sql.Date(tarefa.getPrazo().getTime()));
+            ps.setBoolean(3, tarefa.getFeito());
+            ps.setInt(4, idLista);
+           
+            
 
             ps.execute();
 
@@ -111,7 +113,7 @@ public class TarefaDAO {
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
-                    = conn.prepareStatement("SELECT descricao, prazo, feito, idTarefa "
+                    = conn.prepareStatement("SELECT *"
                             + " FROM Tarefa");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -121,6 +123,7 @@ public class TarefaDAO {
                 tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setPrazo(rs.getDate("prazo"));
                 tarefa.setFeito(rs.getBoolean("feito"));
+                
 
                 listaTarefa.add(tarefa);
             }
