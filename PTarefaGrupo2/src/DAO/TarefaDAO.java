@@ -108,13 +108,15 @@ public class TarefaDAO {
         return false;
     }
 
-    public List<Tarefa> listarTodos() {
+    public List<Tarefa> listarTodos(int idLista) {
         List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
                     = conn.prepareStatement("SELECT *"
-                            + " FROM Tarefa");
+                            + " FROM Tarefa"
+                            + "WHERE idLista = ?");
+            ps.setInt(1, idLista);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 

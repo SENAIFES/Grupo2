@@ -1,6 +1,7 @@
 
 package controllerUtil;
 
+import dao.TarefaDAO;
 import entity.Tarefa;
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,20 +16,27 @@ public class PrincipalController {
     public PrincipalController(Principal view) {
         this.view = view;
     }
-    public void iniciar(){
-        atualizarTabela();
+    public void iniciar(int id){
+        atualizarTabela(id);
         
         view.setVisible(true);
        
     }
 
-    private void atualizarTabela() {
+    private void atualizarTabela(int idLista) {
+        
+        TarefaDAO tarefaDao = new TarefaDAO();
         List <Tarefa> lista = new ArrayList();
-       
+        Tarefa tarefa = new Tarefa();
         
         TarefaTableModel ttm = new TarefaTableModel();
         ttm.setLista(lista);
         
         view.getTblTarefa().setModel(ttm);
+        tarefaDao.listarTodos(idLista);
+        for
+            
+        }
+        
     }
 }

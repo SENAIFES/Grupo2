@@ -12,6 +12,7 @@ import javafx.scene.control.RadioMenuItem;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -30,7 +31,13 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         atualizarCombo();
+        Lista lista = (Lista) cbLista.getSelectedItem();
+        
 
+    }
+
+    public JComboBox getCbLista() {
+        return cbLista;
     }
 
     private void atualizarCombo() {
@@ -41,6 +48,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -277,6 +285,7 @@ public class Principal extends javax.swing.JFrame {
     private void btnNovaTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaTarefaActionPerformed
          Lista lista = (Lista) cbLista.getSelectedItem();
          CadastrarTarefa cadastrarTarefa = new CadastrarTarefa(this, true, lista.getId() );
+         
     }//GEN-LAST:event_btnNovaTarefaActionPerformed
 
     private void btnFeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeitoActionPerformed
