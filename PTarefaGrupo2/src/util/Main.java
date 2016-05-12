@@ -13,6 +13,7 @@ public class Main {
         PrincipalController controller = new PrincipalController(view);
         Lista lista = (Lista) view.getCbLista().getSelectedItem();
         controller.iniciar(lista.getId());
+        
 
     }
 }

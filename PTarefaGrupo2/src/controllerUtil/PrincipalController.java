@@ -1,4 +1,3 @@
-
 package controllerUtil;
 
 import dao.TarefaDAO;
@@ -10,33 +9,34 @@ import view.Principal;
 import view.TarefaTableModel;
 
 public class PrincipalController {
-    
+
     private Principal view;
 
     public PrincipalController(Principal view) {
         this.view = view;
     }
-    public void iniciar(int id){
-        atualizarTabela(id);
-        
+
+    public void iniciar(int idLista) {
+        atualizarTabela(idLista);
+
         view.setVisible(true);
-       
+
     }
 
-    private void atualizarTabela(int idLista) {
-        
+    public void atualizarTabela(int idLista) {
+
         TarefaDAO tarefaDao = new TarefaDAO();
-        List <Tarefa> lista = new ArrayList();
+
         Tarefa tarefa = new Tarefa();
-        
+
         TarefaTableModel ttm = new TarefaTableModel();
-        ttm.setLista(lista);
-        
+        ttm.setLista(tarefaDao.listarTodos(idLista));
+
         view.getTblTarefa().setModel(ttm);
-        tarefaDao.listarTodos(idLista);
-        for
-            
-        }
         
+        
+        ;
+
     }
+
 }

@@ -286,6 +286,8 @@ public class Principal extends javax.swing.JFrame {
          Lista lista = (Lista) cbLista.getSelectedItem();
          CadastrarTarefa cadastrarTarefa = new CadastrarTarefa(this, true, lista.getId() );
          
+         
+         
     }//GEN-LAST:event_btnNovaTarefaActionPerformed
 
     private void btnFeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFeitoActionPerformed

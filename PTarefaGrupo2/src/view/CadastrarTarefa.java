@@ -5,6 +5,7 @@
  */
 package view;
 
+import controllerUtil.PrincipalController;
 import dao.TarefaDAO;
 import entity.Tarefa;
 import java.text.ParseException;
@@ -150,7 +151,7 @@ public class CadastrarTarefa extends javax.swing.JDialog {
         tarefaDao.salvar(tarefa, idLista);
 
         limpar();
-
+        
 
     }//GEN-LAST:event_btnSalvarActionPerformed
 

@@ -93,7 +93,7 @@ public class TarefaDAO {
         try {
             PreparedStatement ps
                     = conn.prepareStatement("DELETE FROM Tarefa "
-                            + "WHERE idLista = ?");
+                            + "WHERE idlista = ?");
             ps.setInt(1, id);
 
             ps.execute();
@@ -109,14 +109,15 @@ public class TarefaDAO {
     }
 
     public List<Tarefa> listarTodos(int idLista) {
-        List<Tarefa> listaTarefa = new ArrayList<Tarefa>();
+        List<Tarefa> listaTarefa = new ArrayList<>();
         Connection conn = ConnectionManager.getConnection();
         try {
             PreparedStatement ps
                     = conn.prepareStatement("SELECT *"
-                            + " FROM Tarefa"
-                            + "WHERE idLista = ?");
+                            + " FROM Tarefa "
+                            + " WHERE idlista = ?");
             ps.setInt(1, idLista);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -125,6 +126,7 @@ public class TarefaDAO {
                 tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setPrazo(rs.getDate("prazo"));
                 tarefa.setFeito(rs.getBoolean("feito"));
+                
                 
 
                 listaTarefa.add(tarefa);
